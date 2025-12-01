@@ -1,10 +1,11 @@
 import express from "express";
-const app = express();
+import "./index.js"; // ← starts your Discord bot
 
+const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
-  res.send("Bot is running!");
+  res.send("Bot + Webserver running!");
 });
 
 app.listen(PORT, () => {
