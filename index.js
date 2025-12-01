@@ -17,16 +17,15 @@ client.commands = new Collection();
 
 // Load commands
 const commandFiles = fs.readdirSync(path.join(__dirname, 'commands'))
-                       .filter(file => file.endsWith('.js'));
+    .filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
-    const { default: command } =
-        await import(`./commands/${file}`);
+    const { default: command } = await import(`./commands/${file}`);
     client.commands.set(command.data.name, command);
 }
 
 client.once('ready', () => {
-    console.log(`✅ Logged in as ${client.user.tag}`);
+    console.log(`Logged in as ${client.user.tag}`);
 });
 
 client.on('interactionCreate', async interaction => {
@@ -41,7 +40,7 @@ client.on('interactionCreate', async interaction => {
         console.error(err);
         await interaction.reply({
             content: 'There was an error executing this command.',
-            ephemeral: true
+            ephemeral: true,
         });
     }
 });
